@@ -92,7 +92,7 @@ class MainActivity : ComponentActivity() {
                verticalArrangement = Arrangement.Top,
            ){
                Text(
-                   text = "${matchDetails?.Matchdetail?.Match?.Date }$matchTime \n $matchVenue \n ",
+                   text = "${matchDetails?.Matchdetail?.Match?.Date } | $matchTime \n $matchVenue \n ",
                    fontSize = 14.sp,
                    color = Color.White,
                    fontStyle = FontStyle.Normal,
