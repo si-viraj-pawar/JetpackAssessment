@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,14 +20,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -41,7 +36,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.jetpackassessment.R
-import com.example.jetpackassessment.framework.model.Players
 import com.example.jetpackassessment.framework.model.X3632
 import com.example.jetpackassessment.framework.vm.MatchVm
 
@@ -97,14 +91,19 @@ fun Greeting(list: ArrayList<X3632>, teamName: String) {
 
 @Composable
 fun playerListView(players : X3632){
-    var openDialog by remember { mutableStateOf(false) }
-
+    var isDialogOpen = remember { mutableStateOf(true) }
+    var isOpen = false
     Card (modifier = Modifier
         .fillMaxHeight(0.1f)
         .fillMaxWidth()
         .padding(8.dp)
         .clickable {
-             openDialog = !openDialog
+            isDialogOpen.value = true
+          /*  if (isOpen) {
+                isOpen = false
+            }else{
+                isOpen = true
+            }*/
         },
         colors = CardDefaults.cardColors(
             containerColor = Color.White
@@ -114,10 +113,16 @@ fun playerListView(players : X3632){
         )
     ){
         Row {
-            if (openDialog){
-                CustomDialog(players,showDialog = openDialog)
+            when{
+                isDialogOpen.value -> {
+                    CustomDialog(
+                        players,
+                        onDismissReq = { isDialogOpen.value = false }
+                    )
+                }
             }
         }
+
         Row{
             Image(
                 painter = painterResource(id = R.drawable.playericon),
@@ -160,6 +165,7 @@ fun playerListView(players : X3632){
 }
 
 
+/*
 @Composable
 fun customDialog(
 
@@ -197,7 +203,9 @@ fun customDialog(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.padding(5.dp))
             {
-                /*  */
+                */
+/*  *//*
+
                 Column {
                     Text(text = "Balling",
                         color = Color.Black,
@@ -221,6 +229,7 @@ fun customDialog(
         }
     }
 }
+*/
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
