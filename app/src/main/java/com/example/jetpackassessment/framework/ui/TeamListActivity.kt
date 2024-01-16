@@ -91,19 +91,14 @@ fun Greeting(list: ArrayList<X3632>, teamName: String) {
 
 @Composable
 fun playerListView(players : X3632){
-    var isDialogOpen = remember { mutableStateOf(true) }
-    var isOpen = false
+    var isDialogOpen = remember { mutableStateOf(false) }
+
     Card (modifier = Modifier
         .fillMaxHeight(0.1f)
         .fillMaxWidth()
         .padding(8.dp)
         .clickable {
             isDialogOpen.value = true
-          /*  if (isOpen) {
-                isOpen = false
-            }else{
-                isOpen = true
-            }*/
         },
         colors = CardDefaults.cardColors(
             containerColor = Color.White
