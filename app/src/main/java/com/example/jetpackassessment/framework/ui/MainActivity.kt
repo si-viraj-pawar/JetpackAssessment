@@ -52,8 +52,7 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun homeScreen(){
-
-      //  val matchDetails = matchVm.matchDetails.collectAsStateWithLifecycle.value?.Matchdetail
+        //  val matchDetails = matchVm.matchDetails.collectAsStateWithLifecycle.value?.Matchdetail
         val matchDetails = matchVm.matchDetails.observeAsState().value
         matchDate = matchDetails?.Matchdetail?.Match?.Date?: ""
         matchTime = matchDetails?.Matchdetail?.Match?.Time?: ""
@@ -81,7 +80,7 @@ class MainActivity : ComponentActivity() {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp)
+                    .height(400.dp)
             )
 
            Column (
@@ -166,5 +165,65 @@ class MainActivity : ComponentActivity() {
     fun previewFun(){
         homeScreen()
     }
+
+/*
+    @Composable
+    fun playerListView(players : X3632){
+        Card (modifier = Modifier
+            .fillMaxHeight(0.1f)
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable {
+                customDialog(player = players)
+                Log.d("PLayerData", "playerListView: " + players.Name_Full)
+            },
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            ),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 10.dp
+            )
+        ){
+            Row{
+                Image(
+                    painter = painterResource(id = R.drawable.playericon),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(100.dp)
+                )
+                Column (modifier = Modifier.padding(20.dp)) {
+                    Text(
+                        text = players.Name_Full,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        fontSize = 18.sp
+                    )
+
+                    if (players.IsCaptain) {
+                        Text(
+                            text = "Captain",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = Color.Green,
+                            textAlign = TextAlign.Left,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                    if (players.Iskeeper) {
+                        Text(
+                            text = "Keeper",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp,
+                            color = Color.Yellow,
+                            textAlign = TextAlign.Left,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
+            }
+        }
+    }
+*/
 }
 

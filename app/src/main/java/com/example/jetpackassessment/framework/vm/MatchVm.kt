@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.jetpackassessment.framework.model.MatchDetailModel
+import com.example.jetpackassessment.framework.model.X3632
 import com.example.jetpackassessment.framework.repo.MatchRepo
 import com.example.jetpackassessment.network.ApiConfig
 import retrofit2.Call
@@ -14,6 +15,9 @@ class MatchVm : ViewModel() {
 
     private val _matchDetails = MutableLiveData<MatchDetailModel>()
     val matchDetails : LiveData<MatchDetailModel> get() = _matchDetails
+
+    var _playerDetails = MutableLiveData<X3632>()
+    val playerDetails : LiveData<X3632> get() = _playerDetails
 
     private val _err = MutableLiveData<String>()
     private val err : LiveData<String> get() = _err

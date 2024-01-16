@@ -1,5 +1,7 @@
 package com.example.jetpackassessment.framework.ui
 
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -25,13 +27,16 @@ import com.example.jetpackassessment.R
 import com.example.jetpackassessment.framework.model.X3632
 
 
-@Composable
+/*@Composable
 fun playerListView(players : X3632){
     Card (modifier = Modifier
         .fillMaxHeight(0.1f)
         .fillMaxWidth()
         .padding(8.dp)
-        .clickable {  },
+        .clickable {
+            customDialog(player = players)
+            Log.d("PLayerData", "playerListView: " + players.Name_Full)
+        },
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
@@ -43,7 +48,9 @@ fun playerListView(players : X3632){
             Image(
                 painter = painterResource(id = R.drawable.playericon),
                 contentDescription = "",
-                modifier = Modifier.fillMaxHeight().width(100.dp)
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(100.dp)
             )
             Column (modifier = Modifier.padding(20.dp)) {
                 Text(
@@ -76,7 +83,7 @@ fun playerListView(players : X3632){
                 }
             }
         }
-    }
+    }*/
 
 
 
